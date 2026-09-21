@@ -1,4 +1,4 @@
-let entrenamiento = [
+let entrenamientos = [
     {
         fecha: "21/09",
         ejercicios: [
