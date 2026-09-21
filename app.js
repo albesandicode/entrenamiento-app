@@ -18,3 +18,9 @@ let entrenamientos = [
         ],
     },
 ];
+
+for (const entrenamiento of entrenamientos) {
+    console.log(`${entrenamiento.fecha} - ${entrenamiento.ejercicios.length} ejercicios`);
+}
+
+// Intentos hasta que funciona: 1
