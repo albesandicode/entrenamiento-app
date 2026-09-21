@@ -8,11 +8,49 @@
 <body>
     <h1>Entrenamiento App v1.0</h1>
 
-    <ul>
-        <li>13/09 - 5 ejercicios</li>
-        <li>12/09 - 7 ejercicios</li>
-        <li>11/09 - 5 ejercicios</li>
-        <li>10/09 - 6 ejercicios</li>
-    </ul>
+    <section>
+        <h2>Historial de entrenamientos</h2>
+        <ul>
+            <li>13/09 - 5 ejercicios</li>
+            <li>12/09 - 7 ejercicios</li>
+            <li>11/09 - 5 ejercicios</li>
+            <li>10/09 - 6 ejercicios</li>
+        </ul>
+    </section>
+
+    <section id="nuevo-entramiento">
+        <h2>Nuevo entrenamiento</h2>
+
+        <label for="fecha-entrenamiento">Fecha</label>
+        <input type="date" id="fecha-entrenamiento">
+
+        <h3>Añadir ejercicio</h3>
+
+        <label for="nuevo-ejercicio">Ejercicio</label>
+        <input type="text" id="nuevo-ejercicio">
+
+        <label for="series">Series</label>
+        <input type="number" id="series">
+
+        <label for="reps">Repeticiones</label>
+        <input type="number" id="reps">
+
+        <label for="peso">Peso</label>
+        <input type="number" id="peso">
+
+        <button type="button">Añadir ejercicio</button>
+
+        <h3>Ejercicios registrados</h3>
+
+        <ul id="ejercicios-registrados">
+            <!-- Aquí aparecen los ejercicios ya registrados del entrenamiento -->
+        </ul>
+
+        <button type="button">Guardar entrenamiento</button>
+    </section>
+
+    <section>
+        <h2>Detalles del entrenamiento</h2>
+    </section>
 </body>
 </html>
