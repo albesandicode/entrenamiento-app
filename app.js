@@ -40,7 +40,9 @@ for (const entrenamiento of entrenamientos) {
     </li>`;
 }
 
-const fechaEntrenamiento = document.getElementById("fecha-detalle-entrenamiento");
+const fechaEntrenamiento = document.getElementById(
+  "fecha-detalle-entrenamiento",
+);
 
 fechaEntrenamiento.textContent = entrenamientos[0].fecha;
 
@@ -60,5 +62,13 @@ for (const ejercicio of entrenamientos[0].ejercicios) {
 }
 
 filasEjercicios.innerHTML = htmlEjercicios;
+
+const botonAnadirEjercicio = document.getElementById("anadir-ejercicio");
+
+let nuevoEjercicio = document.getElementById("nuevo-ejercicio");
+
+botonAnadirEjercicio.addEventListener("click", function () {
+  console.log(nuevoEjercicio.value);
+});
 
 // Intentos hasta que funciona: 5
