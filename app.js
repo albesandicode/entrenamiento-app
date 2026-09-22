@@ -1,6 +1,6 @@
 let entrenamientos = [
     {
-        fecha: "21/09",
+        fecha: "19/09",
         ejercicios: [
             { nombre: "Peso muerto", series: 3, repeticiones: 6, peso: 36 },
             { nombre: "Floor press con barra", series: 4, repeticiones: 8, peso: 24 },
@@ -11,16 +11,35 @@ let entrenamientos = [
         ],
     },
     {
-        fecha: "22/09",
+        fecha: "20/09",
         ejercicios: [
             { nombre: "Sentadillas", series: 3, repeticiones: 8, peso: 26 },
             { nombre: "Peso muerto rumano", series: 3, repeticiones: 10, peso: 32 },
         ],
     },
+    {
+        fecha: "21/09",
+        ejercicios: [
+            { nombre: "Peso muerto", series: 3, repeticiones: 6, peso: 38 },
+            { nombre: "Floor press con barra", series: 4, repeticiones: 8, peso: 28 },
+            { nombre: "Remo con barra", series: 4, repeticiones: 10, peso: 26 },
+            { nombre: "Press militar de pie", series: 3, repeticiones: 8, peso: 22 },
+        ]
+    }
 ];
 
-for (const entrenamiento of entrenamientos) {
+/* for (const entrenamiento of entrenamientos) {
     console.log(`${entrenamiento.fecha} - ${entrenamiento.ejercicios.length} ejercicios`);
+} */
+
+const lista = document.getElementById("lista-entrenamientos");
+
+let html = "";
+
+for (const entrenamiento of entrenamientos) {
+  html += `<li>${entrenamiento.fecha} - ${entrenamiento.ejercicios.length} ejercicios</li>`;
 }
 
-// Intentos hasta que funciona: 1
+lista.innerHTML = html;
+
+// Intentos hasta que funciona: 2
