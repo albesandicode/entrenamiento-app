@@ -28,7 +28,9 @@ let entrenamientos = [
   },
 ];
 
-const historialEntrenamientos = document.getElementById("historial-entrenamientos");
+const historialEntrenamientos = document.getElementById(
+  "historial-entrenamientos",
+);
 
 let htmlEntrenamientos = "";
 
@@ -37,6 +39,10 @@ for (const entrenamiento of entrenamientos) {
         ${entrenamiento.fecha} - ${entrenamiento.ejercicios.length} ejercicios
     </li>`;
 }
+
+const fechaEntrenamiento = document.getElementById("fecha-detalle-entrenamiento");
+
+fechaEntrenamiento.textContent = entrenamientos[0].fecha;
 
 historialEntrenamientos.innerHTML = htmlEntrenamientos;
 
