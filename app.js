@@ -65,10 +65,16 @@ filasEjercicios.innerHTML = htmlEjercicios;
 
 const botonAnadirEjercicio = document.getElementById("anadir-ejercicio");
 
-let nuevoEjercicio = document.getElementById("nuevo-ejercicio");
+const nuevoEjercicio = document.getElementById("nuevo-ejercicio");
+const series = document.getElementById("series");
+const reps = document.getElementById("reps");
+const peso = document.getElementById("peso");
 
 botonAnadirEjercicio.addEventListener("click", function () {
   console.log(nuevoEjercicio.value);
+  console.log(Number(series.value));
+  console.log(Number(reps.value));
+  console.log(Number(peso.value));
 });
 
-// Intentos hasta que funciona: 5
+// Intentos hasta que funciona: 3
