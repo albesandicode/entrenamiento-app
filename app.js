@@ -65,16 +65,43 @@ filasEjercicios.innerHTML = htmlEjercicios;
 
 const botonAnadirEjercicio = document.getElementById("anadir-ejercicio");
 
-const nuevoEjercicio = document.getElementById("nuevo-ejercicio");
+const nombre = document.getElementById("nombre");
 const series = document.getElementById("series");
-const reps = document.getElementById("reps");
+const repeticiones = document.getElementById("repeticiones");
 const peso = document.getElementById("peso");
 
+const ejerciciosEnCurso = [];
+
+const listaEjerciciosRegistrados = document.getElementById("ejerciciosRegistrados");
+
 botonAnadirEjercicio.addEventListener("click", function () {
-  console.log(nuevoEjercicio.value);
-  console.log(Number(series.value));
-  console.log(Number(reps.value));
-  console.log(Number(peso.value));
+  const nombreEjercicioRegistrado = nombre.value;
+  const seriesEjercicioRegistrado = Number(series.value);
+  const repsEjercicioRegistrado = Number(repeticiones.value);
+  const pesoEjercicioRegistrado = Number(peso.value);
+
+  const ejercicioNuevo = {
+    nombre: nombreEjercicioRegistrado,
+    series: seriesEjercicioRegistrado,
+    repeticiones: repsEjercicioRegistrado,
+    peso: pesoEjercicioRegistrado,
+  };
+
+  ejerciciosEnCurso.push(ejercicioNuevo);
+
+  let htmlEjercicioRegistrado = "";
+
+  for (const ejercicioRegistrado of ejerciciosEnCurso) {
+    htmlEjercicioRegistrado += `
+        <li>${ejercicioRegistrado.nombre} - ${ejercicioRegistrado.series} - ${ejercicioRegistrado.repeticiones} - ${ejercicioRegistrado.peso}</li>`;
+  }
+
+  ejerciciosRegistrados.innerHTML = htmlEjercicioRegistrado;
+
+  nombre.value = "";
+  repeticiones.value = "";
+  series.value = "";
+  peso.value = "";
 });
 
-// Intentos hasta que funciona: 3
+// Intentos hasta que funciona: 15
