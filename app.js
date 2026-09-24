@@ -1,6 +1,6 @@
 let entrenamientos = [
   {
-    fecha: "19/09",
+    fecha: "2026-09-19",
     ejercicios: [
       { nombre: "Peso muerto", series: 3, repeticiones: 6, peso: 36 },
       { nombre: "Floor press con barra", series: 4, repeticiones: 8, peso: 24 },
@@ -11,14 +11,14 @@ let entrenamientos = [
     ],
   },
   {
-    fecha: "20/09",
+    fecha: "2026-09-20",
     ejercicios: [
       { nombre: "Sentadillas", series: 3, repeticiones: 8, peso: 26 },
       { nombre: "Peso muerto rumano", series: 3, repeticiones: 10, peso: 32 },
     ],
   },
   {
-    fecha: "21/09",
+    fecha: "2026-09-21",
     ejercicios: [
       { nombre: "Peso muerto", series: 3, repeticiones: 6, peso: 38 },
       { nombre: "Floor press con barra", series: 4, repeticiones: 8, peso: 28 },
@@ -70,9 +70,11 @@ const series = document.getElementById("series");
 const repeticiones = document.getElementById("repeticiones");
 const peso = document.getElementById("peso");
 
-const ejerciciosEnCurso = [];
+const ejerciciosEnCurso = []; // Aquí guardamos los ejercicios que va metiendo el usuario en la sección de Nuevo entrenamiento, antes de guardar el entrenamiento.
 
-const listaEjerciciosRegistrados = document.getElementById("ejerciciosRegistrados");
+const listaEjerciciosRegistrados = document.getElementById(
+  "ejerciciosRegistrados",
+);
 
 botonAnadirEjercicio.addEventListener("click", function () {
   const nombreEjercicioRegistrado = nombre.value;
@@ -80,7 +82,7 @@ botonAnadirEjercicio.addEventListener("click", function () {
   const repsEjercicioRegistrado = Number(repeticiones.value);
   const pesoEjercicioRegistrado = Number(peso.value);
 
-  const ejercicioNuevo = {
+  const ejercicioNuevo = { // Aquí va cada ejercicio que añadimos a los ejercicios registrados.
     nombre: nombreEjercicioRegistrado,
     series: seriesEjercicioRegistrado,
     repeticiones: repsEjercicioRegistrado,
@@ -103,5 +105,23 @@ botonAnadirEjercicio.addEventListener("click", function () {
   series.value = "";
   peso.value = "";
 });
+
+// 1. Leer la fecha del input
+const fecha = document.getElementById("fecha-entrenamiento");
+
+const botonGuardarEntrenamiento = document.getElementById("guardar-entrenamiento");
+
+botonGuardarEntrenamiento.addEventListener("click", function () {
+  const fechaNuevoEntrenamiento = fecha.value;
+
+  const entrenamientoGuardado = {
+    fecha: fechaNuevoEntrenamiento,
+    ejercicios: ejerciciosEnCurso, // La propiedad "ejercicios" guarda el array ejerciciosEnCurso: los ejercicios añadidos con "Añadir ejercicio".
+  };
+
+  entrenamientos.push(entrenamientoGuardado);
+
+  console.log(entrenamientos); 
+})
 
 // Intentos hasta que funciona: 15
