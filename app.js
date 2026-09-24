@@ -1,127 +1,122 @@
-let entrenamientos = [
+let workouts = [
   {
-    fecha: "2026-09-19",
-    ejercicios: [
-      { nombre: "Peso muerto", series: 3, repeticiones: 6, peso: 36 },
-      { nombre: "Floor press con barra", series: 4, repeticiones: 8, peso: 24 },
-      { nombre: "Remo con barra", series: 4, repeticiones: 10, peso: 24 },
-      { nombre: "Press militar de pie", series: 3, repeticiones: 8, peso: 20 },
-      { nombre: "Pájaros", series: 3, repeticiones: 17, peso: 4 },
-      { nombre: "Zancadas", series: 3, repeticiones: 15, peso: 6 },
+    date: "2026-09-19",
+    exercises: [
+      { name: "Peso muerto", sets: 3, reps: 6, weight: 36 },
+      { name: "Floor press con barra", sets: 4, reps: 8, weight: 24 },
+      { name: "Remo con barra", sets: 4, reps: 10, weight: 24 },
+      { name: "Press militar de pie", sets: 3, reps: 8, weight: 20 },
+      { name: "Pájaros", sets: 3, reps: 17, weight: 4 },
+      { name: "Zancadas", sets: 3, reps: 15, weight: 6 },
     ],
   },
   {
-    fecha: "2026-09-20",
-    ejercicios: [
-      { nombre: "Sentadillas", series: 3, repeticiones: 8, peso: 26 },
-      { nombre: "Peso muerto rumano", series: 3, repeticiones: 10, peso: 32 },
+    date: "2026-09-20",
+    exercises: [
+      { name: "Sentadillas", sets: 3, reps: 8, weight: 26 },
+      { name: "Peso muerto rumano", sets: 3, reps: 10, weight: 32 },
     ],
   },
   {
-    fecha: "2026-09-21",
-    ejercicios: [
-      { nombre: "Peso muerto", series: 3, repeticiones: 6, peso: 38 },
-      { nombre: "Floor press con barra", series: 4, repeticiones: 8, peso: 28 },
-      { nombre: "Remo con barra", series: 4, repeticiones: 10, peso: 26 },
-      { nombre: "Press militar de pie", series: 3, repeticiones: 8, peso: 22 },
+    date: "2026-09-21",
+    exercises: [
+      { name: "Peso muerto", sets: 3, reps: 6, weight: 38 },
+      { name: "Floor press con barra", sets: 4, reps: 8, weight: 28 },
+      { name: "Remo con barra", sets: 4, reps: 10, weight: 26 },
+      { name: "Press militar de pie", sets: 3, reps: 8, weight: 22 },
     ],
   },
 ];
 
-const historialEntrenamientos = document.getElementById(
-  "historial-entrenamientos",
-);
+const workoutHistoryList = document.getElementById("workout-history-list");
 
-let htmlEntrenamientos = "";
+let workoutHistoryHTML = "";
 
-for (const entrenamiento of entrenamientos) {
-  htmlEntrenamientos += `<li>
-        ${entrenamiento.fecha} - ${entrenamiento.ejercicios.length} ejercicios
+for (const workout of workouts) {
+  workoutHistoryHTML += `<li>
+        ${workout.date} - ${workout.exercises.length} ejercicios
     </li>`;
 }
 
-const fechaEntrenamiento = document.getElementById(
-  "fecha-detalle-entrenamiento",
-);
+const workoutDetailsDateText = document.getElementById("workout-details-date-text");
 
-fechaEntrenamiento.textContent = entrenamientos[0].fecha;
+workoutDetailsDateText.textContent = workouts[0].date;
 
-historialEntrenamientos.innerHTML = htmlEntrenamientos;
+workoutHistoryList.innerHTML = workoutHistoryHTML;
 
-const filasEjercicios = document.getElementById("filas-ejercicios");
+const workoutExerciseRows = document.getElementById("workout-exercise-rows");
 
-let htmlEjercicios = "";
+let workoutExercisesHTML = "";
 
-for (const ejercicio of entrenamientos[0].ejercicios) {
-  htmlEjercicios += `<tr>
-        <td>${ejercicio.nombre}</td>
-        <td>${ejercicio.series}</td>
-        <td>${ejercicio.repeticiones}</td>
-        <td>${ejercicio.peso}</td>
+for (const exercise of workouts[0].exercises) {
+  workoutExercisesHTML += `<tr>
+        <td>${exercise.name}</td>
+        <td>${exercise.sets}</td>
+        <td>${exercise.reps}</td>
+        <td>${exercise.weight}</td>
     </tr>`;
 }
 
-filasEjercicios.innerHTML = htmlEjercicios;
+workoutExerciseRows.innerHTML = workoutExercisesHTML;
 
-const botonAnadirEjercicio = document.getElementById("anadir-ejercicio");
+const addExerciseButton = document.getElementById("add-exercise-button");
 
-const nombre = document.getElementById("nombre");
-const series = document.getElementById("series");
-const repeticiones = document.getElementById("repeticiones");
-const peso = document.getElementById("peso");
+const exerciseNameInput = document.getElementById("exercise-name-input");
+const exerciseSetsInput = document.getElementById("exercise-sets-input");
+const exerciseRepsInput = document.getElementById("exercise-reps-input");
+const exerciseWeightInput = document.getElementById("exercise-weight-input");
 
-const ejerciciosEnCurso = []; // Aquí guardamos los ejercicios que va metiendo el usuario en la sección de Nuevo entrenamiento, antes de guardar el entrenamiento.
+const currentWorkoutExercises = []; // Aquí guardamos los ejercicios que va metiendo el usuario en la sección de Nuevo entrenamiento, antes de guardar el entrenamiento.
 
-const listaEjerciciosRegistrados = document.getElementById(
-  "ejerciciosRegistrados",
-);
+const currentWorkoutExerciseList = document.getElementById("current-workout-exercise-list");
 
-botonAnadirEjercicio.addEventListener("click", function () {
-  const nombreEjercicioRegistrado = nombre.value;
-  const seriesEjercicioRegistrado = Number(series.value);
-  const repsEjercicioRegistrado = Number(repeticiones.value);
-  const pesoEjercicioRegistrado = Number(peso.value);
+addExerciseButton.addEventListener("click", function () {
+  const exerciseName = exerciseNameInput.value;
+  const exerciseSets = Number(exerciseSetsInput.value);
+  const exerciseReps = Number(exerciseRepsInput.value);
+  const exerciseWeight = Number(exerciseWeightInput.value);
 
-  const ejercicioNuevo = { // Aquí va cada ejercicio que añadimos a los ejercicios registrados.
-    nombre: nombreEjercicioRegistrado,
-    series: seriesEjercicioRegistrado,
-    repeticiones: repsEjercicioRegistrado,
-    peso: pesoEjercicioRegistrado,
+  const newExercise = {
+    // Aquí va cada ejercicio que añadimos a los ejercicios registrados.
+    name: exerciseName,
+    sets: exerciseSets,
+    reps: exerciseReps,
+    weight: exerciseWeight,
   };
 
-  ejerciciosEnCurso.push(ejercicioNuevo);
+  currentWorkoutExercises.push(newExercise);
 
-  let htmlEjercicioRegistrado = "";
+  let currentWorkoutExercisesHTML = "";
 
-  for (const ejercicioRegistrado of ejerciciosEnCurso) {
-    htmlEjercicioRegistrado += `
-        <li>${ejercicioRegistrado.nombre} - ${ejercicioRegistrado.series} - ${ejercicioRegistrado.repeticiones} - ${ejercicioRegistrado.peso}</li>`;
+  for (const currentWorkoutExercise of currentWorkoutExercises) {
+    currentWorkoutExercisesHTML += `
+        <li>${currentWorkoutExercise.name} - ${currentWorkoutExercise.sets} - ${currentWorkoutExercise.reps} - ${currentWorkoutExercise.weight}</li>`;
   }
 
-  ejerciciosRegistrados.innerHTML = htmlEjercicioRegistrado;
+  currentWorkoutExerciseList.innerHTML = currentWorkoutExercisesHTML;
 
-  nombre.value = "";
-  repeticiones.value = "";
-  series.value = "";
-  peso.value = "";
+  exerciseNameInput.value = "";
+  exerciseSetsInput.value = "";
+  exerciseRepsInput.value = "";
+  exerciseWeightInput.value = "";
 });
 
 // 1. Leer la fecha del input
-const fecha = document.getElementById("fecha-entrenamiento");
+const workoutDateInput = document.getElementById("workout-date-input");
 
-const botonGuardarEntrenamiento = document.getElementById("guardar-entrenamiento");
+const saveWorkoutButton = document.getElementById("save-workout-button");
 
-botonGuardarEntrenamiento.addEventListener("click", function () {
-  const fechaNuevoEntrenamiento = fecha.value;
+saveWorkoutButton.addEventListener("click", function () {
+  const newWorkoutDate = workoutDateInput.value;
 
-  const entrenamientoGuardado = {
-    fecha: fechaNuevoEntrenamiento,
-    ejercicios: ejerciciosEnCurso, // La propiedad "ejercicios" guarda el array ejerciciosEnCurso: los ejercicios añadidos con "Añadir ejercicio".
+  const newWorkout = {
+    date: newWorkoutDate,
+    exercises: currentWorkoutExercises, // La propiedad "ejercicios" guarda el array ejerciciosEnCurso: los ejercicios añadidos con "Añadir ejercicio".
   };
 
-  entrenamientos.push(entrenamientoGuardado);
+  workouts.push(newWorkout);
 
-  console.log(entrenamientos); 
-})
+  console.log(workouts);
+});
 
 // Intentos hasta que funciona: 15

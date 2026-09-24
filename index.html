@@ -13,44 +13,44 @@
     <section>
       <h2>Historial de entrenamientos</h2>
 
-      <ul id="historial-entrenamientos"></ul>
+      <ul id="workout-history-list"></ul>
     </section>
 
-    <section id="nuevo-entrenamiento">
+    <section id="new-workout-section">
       <h2>Nuevo entrenamiento</h2>
 
-      <label for="fecha-entrenamiento">Fecha</label>
-      <input type="date" id="fecha-entrenamiento" />
+      <label for="workout-date-input">Fecha</label>
+      <input type="date" id="workout-date-input" />
 
       <h3>Añadir ejercicio</h3>
 
-      <label for="nombre">Ejercicio</label>
-      <input type="text" id="nombre" />
+      <label for="exercise-name-input">Ejercicio</label>
+      <input type="text" id="exercise-name-input" />
 
-      <label for="series">Series</label>
-      <input type="number" id="series" />
+      <label for="exercise-sets-input">Series</label>
+      <input type="number" id="exercise-sets-input" />
 
-      <label for="repeticiones">Repeticiones</label>
-      <input type="number" id="repeticiones" />
+      <label for="exercise-reps-input">Repeticiones</label>
+      <input type="number" id="exercise-reps-input" />
 
-      <label for="peso">Peso</label>
-      <input type="number" id="peso" />
+      <label for="exercise-weight-inpu">Peso</label>
+      <input type="number" id="exercise-weight-input" />
 
-      <button type="button" id="anadir-ejercicio">Añadir ejercicio</button>
+      <button type="button" id="add-exercise-button">Añadir ejercicio</button>
 
       <h3>Ejercicios registrados</h3>
 
-      <ul id="ejerciciosRegistrados">
+      <ul id="current-workout-exercise-list">
         <!-- Aquí aparecen los ejercicios ya registrados del entrenamiento -->
       </ul>
 
-      <button type="button" id="guardar-entrenamiento">Guardar entrenamiento</button>
+      <button type="button" id="save-workout-button">Guardar entrenamiento</button>
     </section>
 
-    <section id="detalles-entrenamiento">
+    <section id="workout-details-section">
       <h2>Detalles del entrenamiento</h2>
 
-      <p id="fecha-detalle-entrenamiento"></p>
+      <p id="workout-details-date-text"></p>
 
       <table>
         <thead>
@@ -62,12 +62,7 @@
           </tr>
         </thead>
 
-        <tbody id="filas-ejercicios">
-          <tr></tr>
-
-          <tr></tr>
-
-          <tr></tr>
+        <tbody id="workout-exercise-rows">
         </tbody>
       </table>
 
