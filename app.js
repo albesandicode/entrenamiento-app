@@ -128,6 +128,8 @@ saveWorkoutButton.addEventListener("click", function () {
 
   currentWorkoutExercises = [];
 
+  currentWorkoutExerciseList.innerHTML = "";
+  
   console.log(workoutHistoryHTML);
 });
 
