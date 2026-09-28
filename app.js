@@ -116,7 +116,17 @@ saveWorkoutButton.addEventListener("click", function () {
 
   workouts.push(newWorkout);
 
-  console.log(workouts);
+  workoutHistoryHTML = "";
+
+  for(let i = workouts.length - 1; i >= 0; i--) {
+    workoutHistoryHTML += `<li>
+    ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
+    </li>`;
+  }
+
+  workoutHistoryList.innerHTML = workoutHistoryHTML;
+
+  console.log(workoutHistoryHTML);
 });
 
 // Intentos hasta que funciona: 15
