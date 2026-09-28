@@ -107,30 +107,35 @@ const workoutDateInput = document.getElementById("workout-date-input");
 const saveWorkoutButton = document.getElementById("save-workout-button");
 
 saveWorkoutButton.addEventListener("click", function () {
-  const newWorkoutDate = workoutDateInput.value;
+  if(currentWorkoutExercises.length > 0) {
+    const newWorkoutDate = workoutDateInput.value;
 
-  const newWorkout = {
-    date: newWorkoutDate,
-    exercises: currentWorkoutExercises, // La propiedad "ejercicios" guarda el array ejerciciosEnCurso: los ejercicios añadidos con "Añadir ejercicio".
-  };
+    const newWorkout = {
+      date: newWorkoutDate,
+      exercises: currentWorkoutExercises, // La propiedad "ejercicios" guarda el array ejerciciosEnCurso: los ejercicios añadidos con "Añadir ejercicio".
+    };
 
-  workouts.push(newWorkout);
+    workouts.push(newWorkout);
 
-  workoutHistoryHTML = "";
+    workoutHistoryHTML = "";
 
-  for(let i = workouts.length - 1; i >= 0; i--) {
-    workoutHistoryHTML += `<li>
-    ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
-    </li>`;
+    for (let i = workouts.length - 1; i >= 0; i--) {
+      workoutHistoryHTML += `<li>
+      ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
+      </li>`;
+    }
+
+    workoutHistoryList.innerHTML = workoutHistoryHTML;
+
+    currentWorkoutExercises = [];
+
+    currentWorkoutExerciseList.innerHTML = "";
+
+    console.log(workoutHistoryHTML);
+  } else {
+    return alert('Debes guardar al menos un ejercicio en el entrenamiento');
   }
 
-  workoutHistoryList.innerHTML = workoutHistoryHTML;
-
-  currentWorkoutExercises = [];
-
-  currentWorkoutExerciseList.innerHTML = "";
-  
-  console.log(workoutHistoryHTML);
 });
 
 // Intentos hasta que funciona: 15
