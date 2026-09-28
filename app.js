@@ -66,7 +66,7 @@ const exerciseSetsInput = document.getElementById("exercise-sets-input");
 const exerciseRepsInput = document.getElementById("exercise-reps-input");
 const exerciseWeightInput = document.getElementById("exercise-weight-input");
 
-const currentWorkoutExercises = []; // Aquí guardamos los ejercicios que va metiendo el usuario en la sección de Nuevo entrenamiento, antes de guardar el entrenamiento.
+let currentWorkoutExercises = []; // Aquí guardamos los ejercicios que va metiendo el usuario en la sección de Nuevo entrenamiento, antes de guardar el entrenamiento.
 
 const currentWorkoutExerciseList = document.getElementById("current-workout-exercise-list");
 
@@ -125,6 +125,8 @@ saveWorkoutButton.addEventListener("click", function () {
   }
 
   workoutHistoryList.innerHTML = workoutHistoryHTML;
+
+  currentWorkoutExercises = [];
 
   console.log(workoutHistoryHTML);
 });
