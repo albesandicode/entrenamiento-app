@@ -49,6 +49,20 @@ for (const exercise of workouts[0].exercises) {
     </tr>`;
 }
 
+workoutHistoryList.addEventListener("click", function (event) {
+  // event.target es donde hago click; closest("li") va hacia el li que lo contiene
+  const clickedItem = event.target.closest("li");
+
+  // Guarda: si hago click en <ul> pero fuera de cualquier fila, salimos, no hay <li>
+  if (clickedItem === null) {
+    return;
+  }
+
+  const index = Number(clickedItem.dataset.index);
+
+  console.log(index, workouts[index]);
+});
+
 workoutExerciseRows.innerHTML = workoutExercisesHTML;
 
 const addExerciseButton = document.getElementById("add-exercise-button");
