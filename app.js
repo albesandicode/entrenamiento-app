@@ -105,7 +105,7 @@ function renderWorkoutHistory() {
   // Recorre workouts desde el último índice hasta el 0
   for (let i = workouts.length - 1; i >= 0; i--) {
     // En cada vuelta, workouts[i] es el entrenamiento que toca; añade su fila
-    workoutHistoryHTML += `<li>
+    workoutHistoryHTML += `<li data-index = "${i}">
         ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
     </li>`;
   }
