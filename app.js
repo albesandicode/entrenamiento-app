@@ -30,19 +30,11 @@ let workouts = [
 
 const workoutHistoryList = document.getElementById("workout-history-list");
 
-let workoutHistoryHTML = "";
-
-for (const workout of workouts) {
-  workoutHistoryHTML += `<li>
-        ${workout.date} - ${workout.exercises.length} ejercicios
-    </li>`;
-}
+renderWorkoutHistory();
 
 const workoutDetailsDateText = document.getElementById("workout-details-date-text");
 
 workoutDetailsDateText.textContent = workouts[0].date;
-
-workoutHistoryList.innerHTML = workoutHistoryHTML;
 
 const workoutExerciseRows = document.getElementById("workout-exercise-rows");
 
@@ -106,6 +98,22 @@ const workoutDateInput = document.getElementById("workout-date-input");
 
 const saveWorkoutButton = document.getElementById("save-workout-button");
 
+function renderWorkoutHistory() {
+  // Texto nuevo y vacío en cada llamada: nunca arrastra filas de antes
+  let workoutHistoryHTML = "";
+
+  // Recorre workouts desde el último índice hasta el 0
+  for (let i = workouts.length - 1; i >= 0; i--) {
+    // En cada vuelta, workouts[i] es el entrenamiento que toca; añade su fila
+    workoutHistoryHTML += `<li>
+        ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
+    </li>`;
+  }
+
+  // Cuando el bucle termina, el texto está completo: se mete en la página una vez
+  workoutHistoryList.innerHTML = workoutHistoryHTML;
+}
+
 saveWorkoutButton.addEventListener("click", function () {
   // Guarda: si NO hay ejercicios, avisa y corta aquí.
   if (currentWorkoutExercises.length === 0) {
@@ -123,15 +131,7 @@ saveWorkoutButton.addEventListener("click", function () {
 
   workouts.push(newWorkout);
 
-  workoutHistoryHTML = "";
-
-  for (let i = workouts.length - 1; i >= 0; i--) {
-    workoutHistoryHTML += `<li>
-    ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
-    </li>`;
-  }
-
-  workoutHistoryList.innerHTML = workoutHistoryHTML;
+  renderWorkoutHistory();
 
   currentWorkoutExercises = [];
 
