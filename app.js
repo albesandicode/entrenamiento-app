@@ -32,22 +32,11 @@ const workoutHistoryList = document.getElementById("workout-history-list");
 
 renderWorkoutHistory();
 
-const workoutDetailsDateText = document.getElementById("workout-details-date-text");
-
-workoutDetailsDateText.textContent = workouts[0].date;
+const workoutDetailsDateText = document.getElementById(
+  "workout-details-date-text",
+);
 
 const workoutExerciseRows = document.getElementById("workout-exercise-rows");
-
-let workoutExercisesHTML = "";
-
-for (const exercise of workouts[0].exercises) {
-  workoutExercisesHTML += `<tr>
-        <td>${exercise.name}</td>
-        <td>${exercise.sets}</td>
-        <td>${exercise.reps}</td>
-        <td>${exercise.weight}</td>
-    </tr>`;
-}
 
 workoutHistoryList.addEventListener("click", function (event) {
   // event.target es donde hago click; closest("li") va hacia el li que lo contiene
@@ -60,10 +49,26 @@ workoutHistoryList.addEventListener("click", function (event) {
 
   const index = Number(clickedItem.dataset.index);
 
-  console.log(index, workouts[index]);
+  renderWorkoutDetails(index); // No sé por qué esto va aquí
 });
 
-workoutExerciseRows.innerHTML = workoutExercisesHTML;
+function renderWorkoutDetails(index) {
+  let workoutExercisesHTML = "";
+
+  workoutDetailsDateText.textContent = workouts[index].date;
+
+  for (const exercise of workouts[index].exercises) {
+    workoutExercisesHTML += `<tr>
+        <td>${exercise.name}</td>
+        <td>${exercise.sets}</td>
+        <td>${exercise.reps}</td>
+        <td>${exercise.weight}</td>
+      </tr>`;
+  }
+
+  // Cuando el bucle termina, el texto está completo: se mete en la página una vez
+  workoutExerciseRows.innerHTML = workoutExercisesHTML;
+}
 
 const addExerciseButton = document.getElementById("add-exercise-button");
 
@@ -74,7 +79,9 @@ const exerciseWeightInput = document.getElementById("exercise-weight-input");
 
 let currentWorkoutExercises = []; // Aquí guardamos los ejercicios que va metiendo el usuario en la sección de Nuevo entrenamiento, antes de guardar el entrenamiento.
 
-const currentWorkoutExerciseList = document.getElementById("current-workout-exercise-list");
+const currentWorkoutExerciseList = document.getElementById(
+  "current-workout-exercise-list",
+);
 
 addExerciseButton.addEventListener("click", function () {
   const exerciseName = exerciseNameInput.value;
