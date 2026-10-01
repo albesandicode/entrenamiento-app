@@ -30,6 +30,31 @@ let workouts = [
 
 const workoutHistoryList = document.getElementById("workout-history-list");
 
+const workoutHistorySection = document.getElementById("workout-history-section");
+const newWorkoutSection = document.getElementById("new-workout-section");
+const workoutDetailsSection = document.getElementById("workout-details-section");
+
+const newWorkoutButton = document.getElementById("new-workout-button");
+const cancelWorkoutButton = document.getElementById("cancel-workout-button");
+
+newWorkoutButton.addEventListener("click", function () {
+  showSection(newWorkoutSection);
+});
+
+cancelWorkoutButton.addEventListener("click", function () {
+  showSection(workoutHistorySection);
+  clearWorkoutForm();
+});
+
+function showSection(sectionToShow) {
+  workoutHistorySection.hidden = true;
+  newWorkoutSection.hidden = true;
+  workoutDetailsSection.hidden = true;
+
+  sectionToShow.hidden = false;
+}
+
+showSection(workoutHistorySection);
 renderWorkoutHistory();
 
 const workoutDetailsDateText = document.getElementById(
@@ -113,6 +138,19 @@ addExerciseButton.addEventListener("click", function () {
   exerciseRepsInput.value = "";
   exerciseWeightInput.value = "";
 });
+
+function clearWorkoutForm() {
+  workoutDateInput.value = "";
+
+  exerciseNameInput.value = "";
+  exerciseSetsInput.value = "";
+  exerciseRepsInput.value = "";
+  exerciseWeightInput.value = "";
+  
+  currentWorkoutExercises = [];
+
+  currentWorkoutExerciseList.innerHTML = "";
+}
 
 // 1. Leer la fecha del input
 const workoutDateInput = document.getElementById("workout-date-input");
