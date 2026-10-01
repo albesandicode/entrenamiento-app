@@ -49,7 +49,7 @@ workoutHistoryList.addEventListener("click", function (event) {
 
   const index = Number(clickedItem.dataset.index);
 
-  renderWorkoutDetails(index); // No sé por qué esto va aquí
+  renderWorkoutDetails(index);
 });
 
 function renderWorkoutDetails(index) {
@@ -123,9 +123,21 @@ function renderWorkoutHistory() {
   // Texto nuevo y vacío en cada llamada: nunca arrastra filas de antes
   let workoutHistoryHTML = "";
 
-  // Recorre workouts desde el último índice hasta el 0
-  for (let i = workouts.length - 1; i >= 0; i--) {
-    // En cada vuelta, workouts[i] es el entrenamiento que toca; añade su fila
+  // workouts guarda todos los entrenamientos y sort los ordena comparando las fechas de dos entrenamientos
+  // Si la fecha de a es anterior a la de b, devuelve 1 para colocar a después que b; si es posterior, devuelve -1 para colocar a antes que b
+  workouts.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    }
+    if (a.date > b.date) {
+      return -1;
+    }
+    return 0;
+  });
+
+  // i guarda el índice del entrenamiento que estamos recorriendo y empieza en 0
+  // En cada vuelta, workouts[i] guarda el entrenamiento que corresponde a ese índice y se añade su fila al historial
+  for (let i = 0; i < workouts.length; i++) {
     workoutHistoryHTML += `<li data-index = "${i}">
         ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
     </li>`;
