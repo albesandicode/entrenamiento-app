@@ -86,7 +86,7 @@ workoutHistoryList.addEventListener("click", function (event) {
 function renderWorkoutDetails(index) {
   let workoutExercisesHTML = "";
 
-  workoutDetailsDateText.textContent = workouts[index].date;
+  workoutDetailsDateText.textContent = formatDate(workouts[index].date);
 
   for (const exercise of workouts[index].exercises) {
     workoutExercisesHTML += `<tr>
@@ -145,6 +145,12 @@ addExerciseButton.addEventListener("click", function () {
   exerciseWeightInput.value = "";
 });
 
+function formatDate(dateString) {
+  const dateParts = dateString.split("-");
+
+  return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+}
+
 function clearWorkoutForm() {
   workoutDateInput.value = "";
 
@@ -183,7 +189,7 @@ function renderWorkoutHistory() {
   // En cada vuelta, workouts[i] guarda el entrenamiento que corresponde a ese índice y se añade su fila al historial
   for (let i = 0; i < workouts.length; i++) {
     workoutHistoryHTML += `<li data-index = "${i}">
-        ${workouts[i].date} - ${workouts[i].exercises.length} ejercicios
+        ${formatDate(workouts[i].date)} - ${workouts[i].exercises.length} ejercicios
     </li>`;
   }
 
