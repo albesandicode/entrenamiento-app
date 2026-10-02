@@ -36,6 +36,7 @@ const workoutDetailsSection = document.getElementById("workout-details-section")
 
 const newWorkoutButton = document.getElementById("new-workout-button");
 const cancelWorkoutButton = document.getElementById("cancel-workout-button");
+const backToHistoryButton = document.getElementById("back-to-history-button");
 
 newWorkoutButton.addEventListener("click", function () {
   showSection(newWorkoutSection);
@@ -44,6 +45,10 @@ newWorkoutButton.addEventListener("click", function () {
 cancelWorkoutButton.addEventListener("click", function () {
   showSection(workoutHistorySection);
   clearWorkoutForm();
+});
+
+backToHistoryButton.addEventListener("click", function () {
+  showSection(workoutHistorySection);
 });
 
 function showSection(sectionToShow) {
@@ -55,7 +60,7 @@ function showSection(sectionToShow) {
 }
 
 showSection(workoutHistorySection);
-renderWorkoutHistory();
+renderWorkoutHistory(); 
 
 const workoutDetailsDateText = document.getElementById(
   "workout-details-date-text",
@@ -75,6 +80,7 @@ workoutHistoryList.addEventListener("click", function (event) {
   const index = Number(clickedItem.dataset.index);
 
   renderWorkoutDetails(index);
+  showSection(workoutDetailsSection);
 });
 
 function renderWorkoutDetails(index) {
@@ -204,9 +210,9 @@ saveWorkoutButton.addEventListener("click", function () {
 
   renderWorkoutHistory();
 
-  currentWorkoutExercises = [];
+  clearWorkoutForm();
 
-  currentWorkoutExerciseList.innerHTML = "";
+  showSection(workoutHistorySection);
 });
 
 // Intentos hasta que funciona: 15
