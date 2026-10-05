@@ -4,6 +4,7 @@
     --button-color: #2563eb;
     --button-text-color: #ffffff;
     --border-color: #737373;
+    --interactive-background-color: #e5e7eb;
 
     --space-xs: 5px;
     --space-sm: 10px;
@@ -11,7 +12,15 @@
     --space-lg: 30px;
     --space-xl: 40px;
 
+    --touch-target-size: 44px;
+
     /* Los px de los bordes y el max-width del body es porque no son espacios entre elementos, así que no pertenecen a la escala */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
@@ -29,6 +38,7 @@ section {
     margin-bottom: var(--space-md);
 }
 
+/* Propiedad compartida, la escribo una sola vez en lugar de repetirla en cada regla. Si la meto dentro de las dos, tendría el mismo valor duplicado. */
 label,
 input {
     display: block;
@@ -40,6 +50,7 @@ label {
 }
 
 input {
+    min-height: var(--touch-target-size);
     margin-bottom: var(--space-xs);
 }
 
@@ -56,8 +67,20 @@ td {
     text-align: left;
 }
 
+.workout-history {
+    list-style: none;
+    padding: 0;
+}
+
+.workout-history li {
+    padding: var(--space-sm);
+    min-height: var(--touch-target-size);
+    margin-bottom: var(--space-xs);
+    background-color: var(--interactive-background-color);
+}
+
 button {
-    min-height: 44px;
+    min-height: var(--touch-target-size);
     background-color: var(--button-color);
     color: var(--button-text-color);
     padding: var(--space-sm);
