@@ -46,9 +46,10 @@
         <!-- Aquí aparecen los ejercicios ya registrados del entrenamiento -->
       </ul>
 
-      <button id="cancel-workout-button" type="button">Cancelar</button>
-
-      <button type="button" id="save-workout-button">Guardar entrenamiento</button>
+      <div class="button-container">
+        <button type="button" id="save-workout-button">Guardar entrenamiento</button>
+        <button id="cancel-workout-button" class="secondary-button" type="button">Cancelar</button>
+      </div>
     </section>
 
     <section id="workout-details-section">
@@ -70,7 +71,7 @@
         </tbody>
       </table>
 
-      <button type="button" id="back-to-history-button">Volver al historial</button>
+      <button class="secondary-button" type="button" id="back-to-history-button">Volver al historial</button>
     </section>
 
     <script src="app.js"></script>

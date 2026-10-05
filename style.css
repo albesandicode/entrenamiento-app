@@ -1,14 +1,32 @@
+:root {
+    --background-color: #f5f5f5;
+    --text-color: #222222;
+    --button-color: #2563eb;
+    --button-text-color: #ffffff;
+    --border-color: #737373;
+
+    --space-xs: 5px;
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --space-xl: 40px;
+
+    /* Los px de los bordes y el max-width del body es porque no son espacios entre elementos, así que no pertenecen a la escala */
+}
+
 body {
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: Arial, Helvetica, sans-serif;
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: var(--space-md);
 }
 
 section {
-    border: 1px solid #333;
-    padding: 20px;
-    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
 }
 
 label,
@@ -17,22 +35,53 @@ input {
 }
 
 label {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
 }
 
 input {
-    margin-bottom: 5px;
+    margin-bottom: var(--space-xs);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: var(--space-sm);
 }
 
 th,
 td {
-    border: 1px solid #333;
-    padding: 8px;
+    border: 1px solid var(--border-color);
+    padding: var(--space-sm);
     text-align: left;
+}
+
+button {
+    min-height: 44px;
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    padding: var(--space-sm);
+    border: 2px solid var(--button-color);
+}
+
+.button-container {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.secondary-button {
+    background-color: var(--background-color);
+    color: var(--button-color);
+    border: 1px solid var(--button-color);
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: var(--space-xs);
+    }
 }
