@@ -2,4 +2,8 @@
 
 <button id="new-workout-button" type="button">Nuevo entrenamiento</button>
 
-<ul id="workout-history-list" class="workout-history"></ul>
+<ul id="workout-history-list" class="workout-history">
+    @for (workout of workoutData.workouts; track workout.id) {
+        <li>{{ workout.date }}: {{ workout.exercises.length }} ejercicios</li>
+    }
+</ul>

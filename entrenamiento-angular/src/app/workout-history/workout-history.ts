@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { WorkoutData } from '../services/workout-data';
 
 @Component({
   imports: [],
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './workout-history.css',
   templateUrl: './workout-history.html',
 })
-export class WorkoutHistory {}
+export class WorkoutHistory {
+  protected workoutData = inject(WorkoutData);
+}
