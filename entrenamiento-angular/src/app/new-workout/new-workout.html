@@ -1,6 +1,6 @@
 <h2>Nuevo entrenamiento</h2>
 
-<p>Último entrenamiento: {{ workoutData.workouts[workoutData.workouts.length - 1].date | date: 'dd/MM/yyyy' }}</p>
+<p>Último entrenamiento: {{ workoutData.workouts[0].date | date: 'dd/MM/yyyy' }}</p>
 
 <label for="workout-date-input">Fecha</label>
 <input type="date" id="workout-date-input" />
