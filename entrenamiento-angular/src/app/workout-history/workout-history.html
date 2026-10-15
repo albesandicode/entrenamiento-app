@@ -7,6 +7,6 @@
 }
 <ul id="workout-history-list" class="workout-history">
     @for (workout of workoutData.workouts; track workout.id) {
-        <li>{{ workout.date }}: {{ workout.exercises.length }} ejercicios</li>
+        <li>{{ workout.date | date: 'dd/MM/yyyy' }}: {{ workout.exercises.length }} ejercicios</li>
     }
 </ul>

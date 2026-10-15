@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { WorkoutData } from '../services/workout-data';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [DatePipe],
   selector: 'app-workout-history',
   styleUrl: './workout-history.css',
   templateUrl: './workout-history.html',
