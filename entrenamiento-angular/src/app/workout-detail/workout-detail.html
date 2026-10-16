@@ -1,6 +1,10 @@
 <h2>Detalles del entrenamiento</h2>
 
-<p id="workout-details-date-text">{{ workoutData.workouts[0].date | date: 'dd/MM/yyyy' }}</p>
+@if (workoutData.workouts.length === 0) {
+  <p>No hay entrenamientos registrados</p>
+} @else {
+  <p id="workout-details-date-text">{{ workoutData.workouts[0].date | date: 'dd/MM/yyyy' }}</p>
+}
 
 <table>
   <thead>
